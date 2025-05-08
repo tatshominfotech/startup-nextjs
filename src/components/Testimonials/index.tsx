@@ -5,29 +5,29 @@ import SingleTestimonial from "./SingleTestimonial";
 const testimonialData: Testimonial[] = [
   {
     id: 1,
-    name: "Musharof Chy",
-    designation: "Founder @TailGrids",
+    name: "Dhaval",
+    designation: "client",
     content:
-      "Our members are so impressed. It's intuitive. It's clean. It's distraction free. If you're building a community.",
-    image: "/images/testimonials/auth-01.png",
+      "Tatshom delivered our project on time with top-notch quality. Truly reliable and professional.",
+    image: "/images/testimonials/client1.png",
     star: 5,
   },
   {
     id: 2,
-    name: "Devid Weilium",
-    designation: "Founder @UIdeck",
+    name: "Dipen",
+    designation: "client",
     content:
-      "Our members are so impressed. It's intuitive. It's clean. It's distraction free. If you're building a community.",
-    image: "/images/testimonials/auth-02.png",
+      "Tatshom provided excellent service, delivering our project on time with great quality. Highly professional team." ,
+    image: "/images/testimonials/client2.png",
     star: 5,
   },
   {
     id: 3,
-    name: "Lethium Frenci",
-    designation: "Founder @Lineicons",
+    name: "V.D",
+    designation: "Client",
     content:
-      "Our members are so impressed. It's intuitive. It's clean. It's distraction free. If you're building a community.",
-    image: "/images/testimonials/auth-03.png",
+      "Tatshom exceeded expectations with timely delivery and excellent quality. Truly a reliable partner!" ,
+    image: "/images/testimonials/client3.png",
     star: 5,
   },
 ];
@@ -38,7 +38,7 @@ const Testimonials = () => {
       <div className="container">
         <SectionTitle
           title="What Our Users Says"
-          paragraph="There are many variations of passages of Lorem Ipsum available but the majority have suffered alteration in some form."
+          paragraph="Clients rave about Tatshom’s expertise, timely delivery, and exceptional service. Trusted for innovative IT solutions that drive success and exceed expectations."
           center
         />
 

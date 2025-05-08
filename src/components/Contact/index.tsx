@@ -1,6 +1,53 @@
+"use client";
+import emailjs from 'emailjs-com';
+
 import NewsLatterBox from "./NewsLatterBox";
+import { useState } from "react";
 
 const Contact = () => {
+  
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+  const [success, setSuccess] = useState(false);
+  const [error, setError] = useState("");
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+  
+    // Clear any previous error messages
+    setError("");
+  
+    // Simple validation for empty fields
+    if (!name || !email || !message) {
+      setError("All fields are required!");
+      return;
+    }
+  
+    emailjs
+    .send(
+      'Jj@9638937040',     // Replace with your Service ID from EmailJS
+      'tatshominfotech',     // Replace with your Template ID from EmailJS
+      { name, email, message },  // Data to be sent to the email template
+      '6_Xe070WGmRVeufvF'          // Replace with your User ID from EmailJS
+    )
+    .then(
+      (result) => {
+        setSuccess(true);
+        setTimeout(() => setSuccess(false), 3000);
+        setName("");
+        setEmail("");
+        setMessage("");
+      },
+      (error) => {
+        setError("Failed to submit the form. Please try again later.");
+      }
+    );
+};
+
+  
+  
+
   return (
     <section id="contact" className="overflow-hidden py-16 md:py-20 lg:py-28">
       <div className="container">
@@ -16,8 +63,20 @@ const Contact = () => {
               </h2>
               <p className="mb-12 text-base font-medium text-body-color">
                 Our support team will get back to you ASAP via email.
-              </p>
-              <form>
+              </p>{error && (
+  <div className="mb-6 rounded bg-red-100 p-4 text-red-800 shadow">
+    ⚠️ {error}
+  </div>
+)}
+
+              <form onSubmit={handleSubmit}>{success && (
+  <div className="mb-6 rounded bg-green-100 p-4 text-green-800 shadow">
+    ✅ Your message has been submitted successfully!
+  </div>
+)}
+
+              
+                
                 <div className="-mx-4 flex flex-wrap">
                   <div className="w-full px-4 md:w-1/2">
                     <div className="mb-8">
@@ -28,10 +87,13 @@ const Contact = () => {
                         Your Name
                       </label>
                       <input
-                        type="text"
-                        placeholder="Enter your name"
-                        className="border-stroke w-full rounded-xs border bg-[#f8f8f8] px-6 py-3 text-base text-body-color outline-hidden focus:border-primary dark:border-transparent dark:bg-[#2C303B] dark:text-body-color-dark dark:shadow-two dark:focus:border-primary dark:focus:shadow-none"
-                      />
+  type="text"
+  value={name}
+  onChange={(e) => setName(e.target.value)}
+  placeholder="Enter your name"
+  className="border-stroke w-full rounded-xs border bg-[#f8f8f8] px-6 py-3 text-base text-body-color outline-hidden focus:border-primary dark:border-transparent dark:bg-[#2C303B] dark:text-body-color-dark dark:shadow-two dark:focus:border-primary dark:focus:shadow-none"
+/>
+
                     </div>
                   </div>
                   <div className="w-full px-4 md:w-1/2">
@@ -43,10 +105,13 @@ const Contact = () => {
                         Your Email
                       </label>
                       <input
-                        type="email"
-                        placeholder="Enter your email"
-                        className="border-stroke w-full rounded-xs border bg-[#f8f8f8] px-6 py-3 text-base text-body-color outline-hidden focus:border-primary dark:border-transparent dark:bg-[#2C303B] dark:text-body-color-dark dark:shadow-two dark:focus:border-primary dark:focus:shadow-none"
-                      />
+  type="email"
+  value={email}
+  onChange={(e) => setEmail(e.target.value)}
+  placeholder="Enter your email"
+  className="border-stroke w-full rounded-xs border bg-[#f8f8f8] px-6 py-3 text-base text-body-color outline-hidden focus:border-primary dark:border-transparent dark:bg-[#2C303B] dark:text-body-color-dark dark:shadow-two dark:focus:border-primary dark:focus:shadow-none"
+/>
+
                     </div>
                   </div>
                   <div className="w-full px-4">
@@ -58,11 +123,12 @@ const Contact = () => {
                         Your Message
                       </label>
                       <textarea
-                        name="message"
-                        rows={5}
-                        placeholder="Enter your Message"
-                        className="border-stroke w-full resize-none rounded-xs border bg-[#f8f8f8] px-6 py-3 text-base text-body-color outline-hidden focus:border-primary dark:border-transparent dark:bg-[#2C303B] dark:text-body-color-dark dark:shadow-two dark:focus:border-primary dark:focus:shadow-none"
-                      ></textarea>
+  rows={5}
+  value={message}
+  onChange={(e) => setMessage(e.target.value)}
+  placeholder="Enter your Message"
+ className="border-stroke w-full resize-none rounded-xs border bg-[#f8f8f8] px-6 py-3 text-base text-body-color outline-hidden focus:border-primary dark:border-transparent dark:bg-[#2C303B] dark:text-body-color-dark dark:shadow-two dark:focus:border-primary dark:focus:shadow-none"
+></textarea>
                     </div>
                   </div>
                   <div className="w-full px-4">

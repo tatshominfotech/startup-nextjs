@@ -50,27 +50,24 @@ const Header = () => {
         <div className="container">
           <div className="relative -mx-4 flex items-center justify-between">
             <div className="w-60 max-w-full px-4 xl:mr-12">
-              <Link
-                href="/"
-                className={`header-logo block w-full ${
-                  sticky ? "py-5 lg:py-2" : "py-8"
-                } `}
-              >
-                <Image
-                  src="/images/logo/logo-2.svg"
-                  alt="logo"
-                  width={140}
-                  height={30}
-                  className="w-full dark:hidden"
-                />
-                <Image
-                  src="/images/logo/logo.svg"
-                  alt="logo"
-                  width={140}
-                  height={30}
-                  className="hidden w-full dark:block"
-                />
-              </Link>
+            <Link
+  href="/"
+  className={`header-logo block w-full ${
+    sticky ? "py-5 lg:py-2" : "py-8"
+  } `}
+>
+  <div className="flex items-center">
+    <Image
+      src="/images/logo/logo final.jpeg" // ✅ Make sure this file exists in /public/images/logo/
+      alt="Tatshom Infotech Logo"
+      width={60}
+      height={60}
+      className="h-auto w-auto"
+    />
+    <span className="font-bold text-lg ml-2">Tatshom Infotech</span>
+  </div>
+</Link>
+
             </div>
             <div className="flex w-full items-center justify-between px-4">
               <div>
@@ -112,8 +109,8 @@ const Header = () => {
                             href={menuItem.path}
                             className={`flex py-2 text-base lg:mr-0 lg:inline-flex lg:px-0 lg:py-6 ${
                               usePathName === menuItem.path
-                                ? "text-primary dark:text-white"
-                                : "text-dark hover:text-primary dark:text-white/70 dark:hover:text-white"
+                                ? "text-primary dark:text-golden"
+                                : "text-dark hover:text-primary dark:text-golden/70 dark:hover:text-white"
                             }`}
                           >
                             {menuItem.title}
@@ -161,15 +158,15 @@ const Header = () => {
               <div className="flex items-center justify-end pr-16 lg:pr-0">
                 <Link
                   href="/signin"
-                  className="text-dark hidden px-7 py-3 text-base font-medium hover:opacity-70 md:block dark:text-white"
+                  className="text-dark hidden px-7 py-3 text-base font-medium hover:opacity-70 md:block dark:text-golden"
                 >
-                  Sign In
+                 
                 </Link>
                 <Link
-                  href="/signup"
+                  href="/about"
                   className="ease-in-up shadow-btn hover:shadow-btn-hover bg-primary hover:bg-primary/90 hidden rounded-xs px-8 py-3 text-base font-medium text-white transition duration-300 md:block md:px-9 lg:px-6 xl:px-9"
                 >
-                  Sign Up
+               Hit here →
                 </Link>
                 <div>
                   <ThemeToggler />

@@ -11,7 +11,7 @@ const Blog = () => {
       <div className="container">
         <SectionTitle
           title="Our Latest Blogs"
-          paragraph="There are many variations of passages of Lorem Ipsum available but the majority have suffered alteration in some form."
+          paragraph="Stay updated with the latest trends, insights, and tips in IT, technology, and business growth. Our blog shares valuable knowledge to help you innovate, solve challenges, and stay ahead in the tech world."
           center
         />
 

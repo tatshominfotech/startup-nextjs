@@ -1,11 +1,15 @@
+'use client';
+
 import Breadcrumb from "@/components/Common/Breadcrumb";
 import Contact from "@/components/Contact";
 
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Contact Page | Free Next.js Template for Startup and SaaS",
-  description: "This is Contact Page for Startup Nextjs Template",
+  title: "Welcome to Tatshom Infotech",
+  description: "software development application development digital marketing",
+  icons: "/favicon.png", 
+  keywords : "software development application development digital marketing"  
   // other metadata
 };
 
@@ -14,7 +18,7 @@ const ContactPage = () => {
     <>
       <Breadcrumb
         pageName="Contact Page"
-        description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. In varius eros eget sapien consectetur ultrices. Ut quis dapibus libero."
+        description="Get in touch with Tatshom Infotech for project inquiries, support, or collaboration. We're here to help you with innovative IT solutions and reliable customer service."
       />
 
       <Contact />

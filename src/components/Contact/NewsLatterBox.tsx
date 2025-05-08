@@ -1,9 +1,44 @@
 "use client";
-
+import emailjs from "emailjs-com";
 import { useTheme } from "next-themes";
+import { useState } from "react";
 
 const NewsLatterBox = () => {
   const { theme } = useTheme();
+  const [formData, setFormData] = useState({ name: "", email: "" });
+const [statusMessage, setStatusMessage] = useState("");
+
+const handleSubmit = (e) => {
+  e.preventDefault();
+
+  if (!formData.name || !formData.email) {
+    setStatusMessage("Please fill out all fields.");
+    return;
+  }
+
+  // Send using EmailJS (example)
+  emailjs
+    .send(
+      "Jj@9638937040",
+      "tatshominfotech",
+      {
+        name: formData.name,
+        email: formData.email,
+      },
+      "6_Xe070WGmRVeufvF"
+    )
+    .then(
+      () => {
+        setStatusMessage("Subscription successful!");
+        setFormData({ name: "", email: "" });
+      },
+      () => {
+        setStatusMessage("Subscription failed. Please try again.");
+      }
+    );
+};
+
+
 
   return (
     <div className="shadow-three dark:bg-gray-dark relative z-10 rounded-xs bg-white p-8 sm:p-11 lg:p-8 xl:p-11">
@@ -11,27 +46,41 @@ const NewsLatterBox = () => {
         Subscribe to receive future updates
       </h3>
       <p className="border-body-color/25 text-body-color mb-11 border-b pb-11 text-base leading-relaxed dark:border-white/25">
-        Lorem ipsum dolor sited Sed ullam corper consectur adipiscing Mae ornare
-        massa quis lectus.
+      "Subscribe to get the latest updates, news, and offers delivered to your inbox. Stay informed and connected with us!"
       </p>
       <div>
+       
         <input
-          type="text"
-          name="name"
-          placeholder="Enter your name"
+  type="text"
+  name="name"
+  value={formData.name}
+  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+  placeholder="Enter your name"
+  className="border-stroke text-body-color focus:border-primary dark:text-body-color-dark dark:shadow-two dark:focus:border-primary mb-4 w-full rounded-xs border bg-[#f8f8f8] px-6 py-3 text-base outline-hidden dark:border-transparent dark:bg-[#2C303B] dark:focus:shadow-none"
+/>
+<input
+  type="email"
+  name="email"
+  value={formData.email}
+  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+  placeholder="Enter your email"
           className="border-stroke text-body-color focus:border-primary dark:text-body-color-dark dark:shadow-two dark:focus:border-primary mb-4 w-full rounded-xs border bg-[#f8f8f8] px-6 py-3 text-base outline-hidden dark:border-transparent dark:bg-[#2C303B] dark:focus:shadow-none"
         />
-        <input
-          type="email"
-          name="email"
-          placeholder="Enter your email"
-          className="border-stroke text-body-color focus:border-primary dark:text-body-color-dark dark:shadow-two dark:focus:border-primary mb-4 w-full rounded-xs border bg-[#f8f8f8] px-6 py-3 text-base outline-hidden dark:border-transparent dark:bg-[#2C303B] dark:focus:shadow-none"
-        />
-        <input
-          type="submit"
-          value="Subscribe"
-          className="bg-primary shadow-submit hover:bg-primary/90 dark:shadow-submit-dark mb-5 flex w-full cursor-pointer items-center justify-center rounded-xs px-9 py-4 text-base font-medium text-white duration-300"
-        />
+        <form onSubmit={handleSubmit}>
+  <input type="submit" />   {/* same updated inputs from Step 2 */}
+  <input defaultValue="Subscribe" />
+
+  <input type="submit" className="bg-primary shadow-submit hover:bg-primary/90 dark:shadow-submit-dark mb-5 flex w-full cursor-pointer items-center justify-center rounded-xs px-9 py-4 text-base font-medium text-white duration-300"
+       />
+</form>
+{statusMessage && (
+  <p className="text-center text-sm mt-3 text-red-500 dark:text-red-400">
+    {statusMessage}
+  </p>
+)}
+
+
+       
         <p className="text-body-color dark:text-body-color-dark text-center text-base leading-relaxed">
           No spam guaranteed, So please don’t send any spam mail.
         </p>
@@ -63,11 +112,8 @@ const NewsLatterBox = () => {
                 <stop
                   stopColor={theme === "light" ? "#4A6CF7" : "#fff"}
                   stopOpacity="0.62"
-                />
-                <stop
-                  offset="1"
-                  stopColor={theme === "light" ? "#4A6CF7" : "#fff"}
-                  stopOpacity="0"
+                
+                  
                 />
               </linearGradient>
             </defs>
