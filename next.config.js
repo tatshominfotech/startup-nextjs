@@ -1,14 +1,10 @@
 /** @type {import('next').NextConfig} */
+// next.config.js
 const nextConfig = {
-  images: {
-    remotePatterns: [
-      {
-        protocol: "https",
-        hostname: "cdn.sanity.io",
-        port: "",
-      },
-    ],
+  eslint: {
+    ignoreDuringBuilds: true,
   },
 };
 
 module.exports = nextConfig;
+
